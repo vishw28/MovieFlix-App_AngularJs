@@ -1,0 +1,83 @@
+
+<div class="container-fluid">
+
+    <nav class="navbar transparent navbar-inverse navbar-fixed-top">
+        <nav class="navbar-inner">
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand">MovieFlix</a>
+            </div>
+            <div class="text-right">
+                <form>
+                    <a href="#/login"><input type="submit" value="LogIn" class="btn btn-default navbar-btn"/></a>
+                    <a href="#/signup"><input type="submit" value="SignUp" class="btn btn-default navbar-btn"/></a>
+                </form>
+            </div>
+        </nav>
+    </nav>
+
+</div>
+
+
+
+
+<div id="loginModal" class="modal show test" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="text-center">Sign up</h1>
+            </div>
+
+            <div class="modal-body"  ng-controller = "SignupController">
+                <form class="form col-md-12 center-block" name="submitForm" ng-submit="addUserVm.signupForm()" nonvalidate>
+
+                    <div class="form-group" ng-class = "{'has-error' : submitForm.firstname.$error.required && !submitForm.firstname.$pristine }">
+                        <input type="text" class="form-control input-lg" placeholder="First Name" id="firstname" name="firstname"
+                               ng-model="addUserVm.newUser.firstName" required>
+                        <span ng-show="submitForm.firstname.$error.required && !submitForm.firstname.$pristine" class="help-block">Your First name is required.</span>
+                    </div>
+
+                    <div class="form-group" ng-class = "{'has-error' : submitForm.lastname.$error.required && !submitForm.lastname.$pristine }">
+                        <input type="text" class="form-control input-lg" placeholder="Last Name" id="lastname" name="lastname"
+                               ng-model="addUserVm.newUser.lastName" required>
+                        <span ng-show="submitForm.lastname.$error.required && !submitForm.lastname.$pristine" class="help-block">Your Last name is required.</span>
+                    </div>
+
+                    <div class="form-group" ng-class = "{'has-error' : submitForm.email.$error.required && !submitForm.email.$pristine }">
+
+                        <input type="email" class="form-control input-lg" placeholder="Email" id="email" name="email"
+                               ng-model="addUserVm.newUser.email" required>
+                        <span ng-show="submitForm.email.$invalid && !submitForm.email.$pristine" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                        <span ng-show="signup.email.$invalid && signup.email.$pristine"
+                              class="help-block">Enter a valid email address.</span>
+                        <span ng-show="signup.email.$required && signup.email.$pristine"
+                              class="help-block">Enter a valid email address.</span>
+                    </div>
+
+                    <div class="form-group" ng-class = "{'has-error' : submitForm.createpwd.$error.required && !submitForm.createpwd.$pristine }">
+                        <input type="password" class="form-control input-lg" placeholder="Create Password"id="pass1" name="creatempwd"
+                               ng-model="addUserVm.newUser.createPwd" required>
+                        <span ng-show="submitForm.createpwd.$error.required && !submitForm.createpwd.$pristine" class="help-block">password is required.</span>
+                    </div>
+
+
+                    <div class="form-group">
+                        <input href="#/login" type="submit" value="SignUp" class="btn btn-primary btn-lg btn-block" ng-disabled="submitForm.$invalid"/>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <div class="col-md-12">
+                    <a href="#/index"><input type="submit" value="Cancel" class="btn btn-primary btn-lg btn-block"/></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

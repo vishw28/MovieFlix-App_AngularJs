@@ -1,0 +1,165 @@
+<div style="background-image: none">
+<div class="container-fluid">
+    <nav class="navbar transparent navbar-inverse navbar-fixed-top">
+        <nav class="navbar-inner">
+
+            <div class="navbar-header">
+                <a class="navbar-brand" ui-sref="app">MovieFlix</a>
+            </div>
+
+            <div class="text-right">
+                <form>
+                    <a href="#/index"><input type="submit" value="Sign Out" class="btn btn-default navbar-btn"/></a>
+                </form>
+            </div>
+        </nav>
+    </nav>
+
+</div>
+
+<!-- Page Content -->
+<div class="container"  ng-controller="HomeController as ctrl">
+
+    <!-- Page Header -->
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="btn-group btn-group-lg" role="group" aria-label="">
+                <button ng-click = "ctrl.select(1)" type="button" class="btn btn-default">Movies</button>
+                <button ng-click = "ctrl.select(2)" type="button" class="btn btn-default">Tv Series</button>
+            </div>
+        </div>
+        <div class="col-lg-3">
+
+        </div>
+        <div class="col-lg-3">
+            <input type="search" placeholder="Search" ng-model="vm.searchMovie.title">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h5>  <span class="label label-default">Select Genere</span> </h5>
+            <button ng-click = "ctrl.select2(1)" type="button" class="btn btn-default">Action</button>
+            <button ng-click = "ctrl.select2(2)" type="button" class="btn btn-default">Adventure</button>
+            <button ng-click = "ctrl.select2(3)" type="button" class="btn btn-default">Sci-Fi</button>
+            <button ng-click = "ctrl.select2(4)" type="button" class="btn btn-default">Thriller</button>
+            <button ng-click = "ctrl.select2(5)" type="button" class="btn btn-default">Crime</button>
+            <button ng-click = "ctrl.select2(6)" type="button" class="btn btn-default">Drama</button>
+            <button ng-click = "ctrl.select2(7)" type="button" class="btn btn-default">Fantasy</button>
+            <button ng-click = "ctrl.select2(8)" type="button" class="btn btn-default">Comedy</button>
+            <button ng-click = "ctrl.select2(9)" type="button" class="btn btn-default">History</button>
+            <button ng-click = "ctrl.select2(10)" type="button" class="btn btn-default">Biography</button>
+            <button ng-click = "ctrl.select2(11)" type="button" class="btn btn-default">Mystery</button>
+            <button ng-click = "ctrl.select2(12)" type="button" class="btn btn-default">Romance</button>
+            <button ng-click = "ctrl.select2(13)" type="button" class="btn btn-default">Western</button>
+            <button ng-click = "ctrl.select2(14)" type="button" class="btn btn-default">Animation</button>
+            <button ng-click = "ctrl.select2(15)" type="button" class="btn btn-default">Family</button>
+            <button ng-click = "ctrl.select2(16)" type="button" class="btn btn-default">Horror</button>
+            <button ng-click = "ctrl.select2(17)" type="button" class="btn btn-default">Documentary</button>
+            <button ng-click = "ctrl.select2(18)" type="button" class="btn btn-default">News</button>
+            <button ng-click = "ctrl.select2(19)" type="button" class="btn btn-default">Talk-Show</button>
+            <button ng-click = "ctrl.select2(20)" type="button" class="btn btn-default">War</button>
+        </div>
+    </div>
+
+    <div class="row">
+
+                    <div class="col-lg-6">
+                        <h5>  <span class="label label-default">Sort By</span> </h5>
+                        <button ng-click = "ctrl.sorter.sortBy = 'title'" type="button" class="btn btn-default">Title</button>
+                        <button ng-click = "ctrl.sorter.sortBy = '-released'" type="button" class="btn btn-default">Date</button>
+                        <button ng-click = "ctrl.sorter.sortBy = '-imdbVotes'" type="button" class="btn btn-default">votes</button>
+                        <button ng-click = "ctrl.sorter.sortBy = '-imdbRating'" type="button" class="btn btn-default">Rating</button>
+                    </div>
+
+    </div>
+
+    <!-- /.row -->
+
+    <!-- Projects Row -->
+    <div class="row">
+        <div  class="col-md-6 portfolio-item" ng-repeat="movie in ctrl.movies | filter: ctrl.searchType| filter: ctrl.searchGenere  | filter: vm.searchMovie | orderBy : ctrl.sorter.sortBy">
+
+            <a href="#">
+                <img class="img-responsive img" ng-src="{{movie.poster}}" alt="">
+            </a>
+
+            <h3>
+                <a>{{movie.title}}</a>
+                <small>{{movie.year}}</small>
+            </h3>
+
+            <dl>
+                <input type="checkbox" class="read-more-state" id="{{movie.title}}" />
+                <div class="read-more-wrap">
+                    <div class ="row">
+                        <div class="col-sm-6">
+
+                            <dt class="read-more-target">Actors</dt>
+                            <dd class="read-more-target">{{movie.actors}}</dd>
+                            <dt class="read-more-target">language</dt>
+                            <dd class="read-more-target">{{movie.language}}</dd>
+                            <dt class="read-more-target">Genre</dt>
+                            <dd class="read-more-target">{{movie.genre}}</dd>
+                            <dt class="read-more-target">IMDB Rating</dt>
+                            <dd class="read-more-target">{{movie.imdbRating}}</dd>
+                            <dt class="read-more-target">Plot</dt>
+                            <dd class="read-more-target">{{movie.plot}}</dd>
+                            <dt class="read-more-target">Rated</dt>
+                            <dd class="read-more-target">{{movie.rated}}</dd>
+                            <dt class="read-more-target">Type</dt>
+                            <dd class="read-more-target">{{movie.type}}</dd>
+                            <dt class="read-more-target">Released On</dt>
+                            <dd class="read-more-target">{{movie.released}}</dd>
+                            <dt class="read-more-target">Runtime</dt>
+                            <dd class="read-more-target">{{movie.runtime}}</dd>
+                            <dt class="read-more-target">Director</dt>
+                            <dd class="read-more-target">{{movie.director}}</dd>
+                            <dt class="read-more-target">Country</dt>
+                            <dd class="read-more-target">{{movie.country}}</dd>
+                            <dt class="read-more-target">Awards</dt>
+                            <dd class="read-more-target">{{movie.awards}}</dd>
+                            <dt class="read-more-target">Meta Score</dt>
+                            <dd class="read-more-target">{{movie.metascore}}</dd>
+                            <dt class="read-more-target">IMDB Votes</dt>
+                            <dd class="read-more-target">{{movie.imdbVotes}}</dd>
+                            <dt class="read-more-target">IMDB ID</dt>
+                            <dd class="read-more-target">{{movie.imdbID}}</dd>
+                        </div>
+
+
+                        <div class="col-sm-6">
+
+                            <dt class="read-more-target">Comment:</dt>
+                            <dd class="read-more-target"><input type="text" id="comment" name="comment" placeholder="Comment here.." ng-model="ctrl.comments">
+                                <button ng-click="ctrl.addComment(movie)" type="submit">Submit</button>
+                            </dd>
+                            <dd  class="read-more-target" ng-repeat = 'x in movie.comments.split(",") track by $index'>{{x}}</dd>
+
+                            <dt class="read-more-target">Rating:</dt>
+                            <dd class="radio-inline read-more-target">
+                                <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1" ng-model="ctrl.rating"> 1
+                            </dd>
+                            <dd class="radio-inline read-more-target">
+                                <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="2" ng-model="ctrl.rating"> 2
+                            </dd>
+                            <dd class="radio-inline read-more-target">
+                                <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="3" ng-model="ctrl.rating"> 3
+                            </dd>
+                            <dd class="radio-inline read-more-target">
+                                <input type="radio" name="inlineRadioOptions" id="inlineRadio4" value="4" ng-model="ctrl.rating"> 4
+                            </dd>
+                            <dd class="radio-inline read-more-target">
+                                <input type="radio" name="inlineRadioOptions" id="inlineRadio5" value="5" ng-model="ctrl.rating"> 5
+                            </dd>
+                            <dd ng-repeat="y in movie.ratings" class="read-more-target">{{y}}</dd>
+                            <button ng-click="ctrl.addRating(movie)" type="submit" class="read-more-target">Rate Now!</button>
+                        </div>
+                    </div>
+                </div>
+                <label for="{{movie.title}}" class="read-more-trigger"></label>
+            </dl>
+        </div>
+    </div>
+</div>
+</div>

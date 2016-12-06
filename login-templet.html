@@ -1,0 +1,72 @@
+
+
+<div class="container-fluid">
+
+    <nav class="navbar transparent navbar-inverse navbar-fixed-top">
+        <nav class="navbar-inner">
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" ui-sref="app">MovieFlix</a>
+            </div>
+            <div class="text-right">
+                <form>
+                    <a href="#/login"><input type="submit" value="LogIn" class="btn btn-default navbar-btn"/></a>
+                    <a href="#/signup"><input type="submit" value="SignUp" class="btn btn-default navbar-btn"/></a>
+                </form>
+            </div>
+        </nav>
+    </nav>
+
+</div>
+
+
+
+
+<div id="loginModal" class="modal show test" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h1 class="text-center">Login</h1>
+            </div>
+            <div class="modal-body" ng-controller="LoginController">
+                <form class="form col-md-12 center-block" name="submitForm" ng-submit="log.loginForm()" nonvalidate >
+
+                    <div class="form-group" ng-class = "{'has-error' : submitForm.email.$error.required && !submitForm.email.$pristine }">
+
+                        <input type="email" class="form-control input-lg" placeholder="Email" id="email" name="email"
+                               ng-model="log.login.email" required>
+                        <span ng-show="submitForm.email.$invalid && !submitForm.email.$pristine" class="help-block"><p>Email Id is invalid</p></span>
+
+                    </div>
+                    <div class="form-group" ng-class = "{'has-error' : submitForm.pwd.$error.required && !submitForm.pwd.$pristine }">
+
+
+                        <input type="password" class="form-control input-lg" placeholder="Enter Password"id="pass1" name="pwd"
+                               ng-model="log.login.pwd" required>
+                        <span ng-show="submitForm.pwd.$error.required && !submitForm.pwd.$pristine" class="help-block">Password required.</span>
+
+
+
+                    </div>
+                    <div class="form-group">
+
+                       <input type="submit" value="LogIn" class="btn btn-primary btn-lg btn-block" ng-disabled="submitForm.$invalid"/>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+
+                <div class="col-md-12">
+                    <a href="#/index"><input type="submit" value="Cancel" class="btn btn-primary btn-lg btn-block"/></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
